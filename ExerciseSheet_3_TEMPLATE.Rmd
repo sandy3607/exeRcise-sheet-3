@@ -173,7 +173,22 @@ df1<-df%>%
   group_by(Vorname)%>%
   summarize(name_count = sum(Anzahl))%>%
   arrange(desc(name_count))
-kable(head(df1, n=10))
+kable(head(df1, n=10), caption = "Top 10 Names in 2021 and 2022")
+```
+```{r}
+df2<-df2021%>%
+  group_by(Vorname)%>%
+  summarize(name_count = sum(Anzahl))%>%
+  arrange(desc(name_count))
+kable(head(df2, n=10), caption = "Top 10 Names in 2021")
+```
+
+```{r}
+df3<-df2022%>%
+  group_by(Vorname)%>%
+  summarize(name_count = sum(Anzahl))%>%
+  arrange(desc(name_count))
+kable(head(df3, n=10), caption = "Top 10 Names in 2022")
 ```
 
 
