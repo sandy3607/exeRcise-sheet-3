@@ -143,6 +143,15 @@ There were more babies born in 2021.
 
 d)  Add a new column `year` to both datasets which holds the correct
     year for each.
+    
+```{r}
+df2021<-df2021%>%
+  mutate(year = 2021)
+
+df2022<-df2022%>%
+  mutate(year = 2022)
+```
+    
 
 e)  Combine both datasets into one using `bind_rows()`.
 
