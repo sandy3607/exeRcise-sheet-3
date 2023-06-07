@@ -77,6 +77,8 @@ b)  Push your code to this new repository by copying and executing the
     
 c)  Regularly push your latest changes to GitHub again and especially do
     so when you are finished with this sheet.
+    
+    
 
 ## Exercise 3: Baby-Names in Munich (4.5 Points)
 
@@ -86,8 +88,16 @@ open data repository of the city of Munich for the years `2022` and
 
 Link: <https://opendata.muenchen.de/dataset/vornamen-von-neugeborenen>
 
+
+
 a)  Download the data for both years and track it in git. For small
     datasets like these adding them to git is not a problem.
+    
+```{r}
+2022 = read.csv("open_data_portal_2022.csv")
+2021 = read.csv("vornamen_2021.csv")
+```
+    
 
 b)  Load the data for both years into R. Check the type of the count
     variable ("Anzahl") and look into the data to determine why it is
