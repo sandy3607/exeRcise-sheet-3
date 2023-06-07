@@ -163,6 +163,19 @@ df<-bind_rows(df2021, df2022)
 f)  Combine the counts for same names to determine the most popular
     names across both years. Print out the top 10 names in a nicely
     formatted table for both years. Include a table caption.
+```{r message=FALSE, warning=FALSE}
+library(knitr)
+```
+
+
+```{r}
+df1<-df%>%
+  group_by(Vorname)%>%
+  summarize(name_count = sum(Anzahl))%>%
+  arrange(desc(name_count))
+kable(head(df1, n=10))
+```
+
 
 ## Exercise 4: Chat GPT + apply (3 points)
 
