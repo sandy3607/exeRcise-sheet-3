@@ -94,8 +94,8 @@ a)  Download the data for both years and track it in git. For small
     datasets like these adding them to git is not a problem.
     
 ```{r}
-2022 = read.csv("open_data_portal_2022.csv")
-2021 = read.csv("vornamen_2021.csv")
+df2022 <- read.csv("open_data_portal_2022.csv")
+df2021 <- read.csv("vornamen_2021.csv")
 ```
     
 
@@ -104,6 +104,30 @@ b)  Load the data for both years into R. Check the type of the count
     not numeric? Fix the problem in an appropriate manner, it is OK if
     some of the counts are inaccurate because of this. Explain your
     solution and the repercussions.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+```{r}
+typeof(df2021$Anzahl)
+typeof(df2022$Anzahl)
+
+# the types of the variable "Anzahl" is a character.
+# the numbers are surrounded with ''.
+
+df2021$Anzahl<-df2021$Anzahl %>%
+  parse_number()
+
+df2022$Anzahl<-df2022$Anzahl %>%
+  parse_number()
+
+typeof(df2021$Anzahl)
+typeof(df2022$Anzahl)
+# solution: the function parse_number dropped "'"s.
+# repercussion : it turned the character-values into doubles.
+```
+
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
