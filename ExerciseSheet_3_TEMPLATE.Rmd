@@ -280,6 +280,18 @@ b)  Using ChatGPT try to understand what the rapply() function does.
     Create an easy example with mock data where the function is used and
     explain it in your words.
 
+the function rapply() applies a function to elements of a list. (the list can have lists inside, too.) 
+
+example:
+```{r}
+my_list <- list("hello", list("world", "yay"), list("fortstatsoft"))
+
+result <- rapply(my_list, toupper, how = "replace")
+
+print(result)
+```
+the rapply() function went through the list and applied the function toupper() to every elements in the list. The original values in the list were replaced by the new values.
+
 ## Final Note
 
 Make sure to push all your commits and changes to GitHub before
