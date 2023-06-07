@@ -46,10 +46,10 @@ c)  For all of the following tasks in this exercise sheet we ask you to
 d)  Name 2 strengths and 2 weaknesses of git. (Don't forget to create a
     commit after this answer, see *1c*)
     
-    strengths :
+  strengths :
       - fast
       - good for collaboration
-    weaknesses:
+  weaknesses:
       - problems with binary/large files
       - it does not work automatically, so you need to use it actively.
     
@@ -251,12 +251,15 @@ Error: unexpected '\\' in "column_means \"
 # column_means
 ```
 
-prompt:
-column_means \<- lapply(tax_data\[, -1\], 2, mean)
 
-column_means
-
-Please tell me what is wrong with this code and fix it.
+```{r}
+# prompt:
+# column_means \<- lapply(tax_data\[, -1\], 2, mean)
+# 
+# column_means
+# 
+# Please tell me what is wrong with this code and fix it.
+```
 
 Problem was:
 \ caused a syntax error,and the second argument of lapply has to be a function and not a number like 2. To calculate the mean, use the mean function.
