@@ -225,7 +225,7 @@ Tax_2020 = c(4800, 4200, 5800, 3700), Tax_2021 = c(5200, 3800, 5900,
 3400) )
 Please tell me what is wrong with this code and fix it.
 
-Problem was: \ made a syntax error.
+Problem was: The backslash made a syntax error.
 
 corrected code:
 
@@ -261,8 +261,9 @@ Error: unexpected '\\' in "column_means \"
 # Please tell me what is wrong with this code and fix it.
 ```
 
+ChatGPT first suggested a solution using lapply.
 Problem was:
-\ caused a syntax error,and the second argument of lapply has to be a function and not a number like 2. To calculate the mean, use the mean function.
+The backslash caused a syntax error,and the second argument of lapply has to be a function and not a number like 2. To calculate the mean, use the mean function.
 
 ```{r}
 column_means <- lapply(tax_data[, -1], mean)
@@ -271,11 +272,41 @@ column_means
 ```
 is the right code.
 
+The second solution which ChatGPT provided me was an alternative way using a sapply() function. The argument "2" would be inappropriate here, too. 
+```{r}
+column_means2 <- sapply(tax_data[, -1], mean)
+
+column_means2
+
+```
+This is a little bit easier to read.
+
+Wondering why the second argument "2" in the given, falsly code might be there, I asked ChatGPT some questions like the following:
+
+prompt:
+could the second argument of the code that I provided mean something and make some sense in a context of using an other apply function? and what if we replaced lapply with other apply functions?
+
+The third solution I found using ChatGPT uses the function apply(). Then the argument "2" could be used as an argument indicating that the function should be applied column-wise.
+
+so the final corrected code that uses all the arguments in the given code and uses a function other than lapply():
+```{r}
+column_means3 <- apply(tax_data[, -1], 2, mean)
+
+column_means3
+
+```
+
 Calculating the rowwise mean:
 ```{r}
 row_means <- rowMeans(tax_data[, -1])
 
 row_means
+```
+or the same by using apply() :
+```{r}
+row_means2 <- apply(tax_data[, -1], 1, mean)
+
+row_means2
 ```
 
 
