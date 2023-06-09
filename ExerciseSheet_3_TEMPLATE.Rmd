@@ -21,6 +21,10 @@ date: "`r Sys.Date()`"
 -   Always submit both the rendered document(s) as well as your source
     Rmarkdown document. Submit the files separately on moodle, **not**
     as a zip archive.
+```{r message=FALSE, warning=FALSE}
+Sys.setenv(LANG = "en_US.UTF-8")
+```
+    
 
 ## Exercise 1: Initializing git (4 Points)
 
@@ -114,20 +118,28 @@ typeof(df2021$Anzahl)
 typeof(df2022$Anzahl)
 
 # the types of the variable "Anzahl" is a character.
-# the numbers are surrounded with ''.
+
 
 df2021$Anzahl<-df2021$Anzahl %>%
-  parse_number()
+  as.numeric()
 
 df2022$Anzahl<-df2022$Anzahl %>%
-  parse_number()
+  as.numeric()
 
 typeof(df2021$Anzahl)
 typeof(df2022$Anzahl)
-# solution: the function parse_number dropped "'"s.
-# repercussion : it turned the character-values into doubles.
+# solution: Using the function as.numeric(),
+# repercussion : it changed the values like "4 oder weniger" into NA, reducing the number of observations. It also turned the character-values into doubles.
+```
+for further calculations, delete NAs
+```{r}
+df2021<-df2021%>%
+  na.omit()
+df2022<-df2022%>%
+  na.omit()
 ```
 
+second repercussion: omitting the NA values leaves us with 604 and 565 observations each for 2021 and 2022
 
 c)  Calculate the total number of babies born in Munich in 2022
     and 2021. Which year had the bigger baby-boom?
