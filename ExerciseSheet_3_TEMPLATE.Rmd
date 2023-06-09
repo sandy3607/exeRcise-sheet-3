@@ -151,7 +151,11 @@ sum2022 <- sum(df2022$Anzahl)
 sum2021
 sum2022
 ```
-There were more babies born in 2021.
+According to this number, there were more babies born in 2021. However, because there were a a lot of NAs we removed, (2021: 4378  -> 604 rows and 2022: 4390 -> 565 rows), this is not accurate and could even be wrong. 
+For example, when all the "4 oder weniger" values were 1 in 2021 but if those from 2022 were all 4, 
+11524 + (604 x 1) = 12128 babies in 2021 while
+9899 + (565 x 4) = 12159 babies in 2022. Which means that it is possible that there are more babies were born in 2022. 
+We have too much names with "4 oder weniger" counts in our datasets.
 
 d)  Add a new column `year` to both datasets which holds the correct
     year for each.
